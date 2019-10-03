@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+        <link rel="stylesheet" href="CSS/Style.css">
+        
+    </head>
+    <body>
+        <h1 id = "log">vier op een rij</h1>
+        <table id="table">
+            <thead><th></th></thead>
+            <tbody>
+                
+                    <tr><td class="Colom0">*</td> <td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td></tr>
+                    <tr><td class="Colom0">*</td> <td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td></tr>
+                    <tr><td class="Colom0">*</td> <td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td></tr>
+                    <tr><td class="Colom0">*</td> <td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td></tr>             
+                    <tr><td class="Colom0">*</td> <td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td></tr>
+                    <tr><td class="Colom0">*</td> <td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td></tr>
+
+            </tbody>
+
+        </table>
+    </body>
+
+    <script>
+
+    $(document).ready(function(){
+        InitGameManager();
+    });
+
+
+  
+    function InitGameManager() {
+        
+        console.log('GRID:'+ $('td').length);
+        $('td').each(function(index,value){          
+            $('td').attr('id',$(this.index))
+            $('td').click(function(){
+                $(this).addClass("red-cell");
+                $( "#log" ).html( "clicked: " + 'td' + index + ':' + $(this).attr('id'));
+            })
+
+            $('Colom0').mouseenter(function(){
+                alert("testtest");
+            })
+            console.log('td' + index + ':' + $(this).attr('id'));
+            
+        })
+            
+    }
+
+    </script>
+</html>
