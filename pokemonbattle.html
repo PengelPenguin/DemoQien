@@ -1,0 +1,47 @@
+<html>
+    <head>
+
+    </head>
+    <script>
+        function StartGevecht(pokemon1,pokemon2){
+            alert("start");
+        }
+
+        function Attack(){
+            alert("attack");
+        }
+    </script>
+    <body>
+        <div class="SelectContainer">
+            <h1>Player 1</h1>
+                <select class="player1">
+                    <option value="charmander">charmander</option>
+                    <option value="squirtle">squirtle</option>
+                    <option value="bulbasaur">bulbasaur</option>
+                </select>
+            <h1>Player 2</h1>
+                <select class="player2">
+                    <option value="charmander">charmander</option>
+                    <option value="squirtle">squirtle</option>
+                    <option value="bulbasaur">bulbasaur</option>
+                </select>
+
+        </div>
+
+        <button value= "start" onclick="StartGevecht()">start gevecht</button>
+
+        <div class="BattleContainer">
+            <h1>Aanvallen player 1</h1>
+                <button value="aanval1" onclick="Attack()">aanval1</button>
+                <button value="aanval2" onclick="Attack()">aanval2</button>
+                <button value="aanval3" onclick="Attack()">aanval3</button>
+                <button value="aanval4" onclick="Attack()">aanval4</button>
+
+            <h1>Aanvallen player 2</h1>
+                <button value="aanval1" onclick="Attack()">aanval1</button>
+                <button value="aanval2" onclick="Attack()">aanval2</button>
+                <button value="aanval3" onclick="Attack()">aanval3</button>
+                <button value="aanval4" onclick="Attack()">aanval4</button>
+        </div>
+    </body>
+</html>

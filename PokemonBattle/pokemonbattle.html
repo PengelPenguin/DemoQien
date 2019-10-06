@@ -1,0 +1,64 @@
+<html>
+    <head>
+        
+    </head>
+    <script>
+
+        var player_1_ready;
+        var player_2_ready;
+
+        var player_1_pokemon;
+        var player_2_pokemon;
+
+        function StartGevecht(){
+            var keuzePokemon = document.getElementById('char');
+            var player_1_pokemon = keuzePokemon.options[keuzePokemon.selectedIndex].value;
+            if(player_1_pokemon == null && player_2_pokemon == null)
+            {
+                alert("Kies allebij een pokemon :)");
+            }
+            else
+                alert("We gaan beginnen!!");
+
+                //Todo Default value(Niks) toevoegen.
+        }
+
+        function Attack(){
+            alert("attack");
+        }
+    </script>
+    <body>
+        <div class="SelectContainer">
+            <h1>Player 1</h1>
+                <select class="player1" id="char">
+                    <option value="charmander">charmander</option>
+                    <option value="squirtle">squirtle</option>
+                    <option value="bulbasaur">bulbasaur</option>
+                </select>
+            <h1>Player 2</h1>
+                <select class="player2">
+                    <option value="charmander">charmander</option>
+                    <option value="squirtle">squirtle</option>
+                    <option value="bulbasaur">bulbasaur</option>
+                </select>
+
+        </div>
+
+        <button value= "start" onclick="StartGevecht()">start gevecht</button>
+
+        <div class="BattleContainer">
+            <h1>Aanvallen player 1</h1>
+                <button value="aanval1" onclick="Attack()">aanval1</button>
+                <button value="aanval2" onclick="Attack()">aanval2</button>
+                <button value="aanval3" onclick="Attack()">aanval3</button>
+                <button value="aanval4" onclick="Attack()">aanval4</button>
+
+            <textarea id ="battleStatus"></textarea>
+            <h1>Aanvallen player 2</h1>
+                <button value="aanval1" onclick="Attack()">aanval1</button>
+                <button value="aanval2" onclick="Attack()">aanval2</button>
+                <button value="aanval3" onclick="Attack()">aanval3</button>
+                <button value="aanval4" onclick="Attack()">aanval4</button>
+        </div>
+    </body>
+</html>
