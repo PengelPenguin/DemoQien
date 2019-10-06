@@ -11,16 +11,19 @@
         var player_2_pokemon;
 
         function StartGevecht(){
-            var keuzePokemon = document.getElementById('char');
-            var player_1_pokemon = keuzePokemon.options[keuzePokemon.selectedIndex].value;
-            if(player_1_pokemon == null && player_2_pokemon == null)
+            //player1
+            var keuzePokemon1 = document.getElementById('keuzePlayer1');
+            var player_1_pokemon = keuzePokemon1.options[keuzePokemon1.selectedIndex].value;
+            
+            //player 2
+            var keuzePokemon2 = document.getElementById('keuzePlayer2');
+            var player_2_pokemon = keuzePokemon2.options[keuzePokemon2.selectedIndex].value;
+            if(player_2_pokemon == "keuze" || player_2_pokemon == "keuze")
             {
-                alert("Kies allebij een pokemon :)");
+                alert("kies een pokemon");
             }
             else
                 alert("We gaan beginnen!!");
-
-                //Todo Default value(Niks) toevoegen.
         }
 
         function Attack(){
@@ -30,13 +33,15 @@
     <body>
         <div class="SelectContainer">
             <h1>Player 1</h1>
-                <select class="player1" id="char">
+                <select class="player1" id="keuzePlayer1">
+                    <option value="keuze" selected>kies een pokemon</option>
                     <option value="charmander">charmander</option>
                     <option value="squirtle">squirtle</option>
                     <option value="bulbasaur">bulbasaur</option>
                 </select>
             <h1>Player 2</h1>
-                <select class="player2">
+                <select class="player2" id="keuzePlayer2">
+                    <option value="keuze" selected>kies een pokemon</option>
                     <option value="charmander">charmander</option>
                     <option value="squirtle">squirtle</option>
                     <option value="bulbasaur">bulbasaur</option>
