@@ -1,0 +1,410 @@
+<html>
+    <head>
+   	 
+   	 <script>
+   		 var mijnArray = ["20", "20", "30"]
+   		 var mijnAndereArray = ["20", "1", mijnArray]
+   		 var nogEenArray = [mijnArray, mijnArray, mijnAndereArray]
+   		 var deVierdeArray = [mijnAndereArray, mijnArray, nogEenArray]
+ 
+ 
+   		 function abraCadabra(input, input2) {
+ 
+   		 mijnArray.push(input)
+   		 deVierdeArray.push(input2)
+   		 console.log(deVierdeArray[2][2][2][3])
+            //nogEenArray nogEenArray nogEenArray 15
+ 
+   		 }
+ 
+   		 function pilatusPas(input, input2) {
+ 
+   			 var j = input
+   			 var l = input2
+ 
+   			 abraCadabra(j, l)
+   		 }
+ 
+ 
+ 
+   		 function hocusPocus() {
+ 
+   			 var i = "15"
+   			 var k = "2"
+   			 pilatusPas(i, k)
+ 
+   		 }
+ 
+   		 
+   	 </script>
+ 
+    </head>
+ 
+ 
+    <body>
+   	 <input type=button value="De magische knop" onclick=hocusPocus()>
+    </body>
+ 
+    
+</html>
+ 
+========
+ 
+<html>
+    <head>
+        <style>
+ 
+        </style>
+        <script>
+        
+            function optellen(){
+                console.log("in optellen");
+                totEenBepaaldGetalTellen(45); // argument
+                console.log("=============");
+                totEenBepaaldGetalTellen(9);
+            }
+ 
+            function totEenBepaaldGetalTellen( eindGetal ){  // parameter
+                var getal = 1;
+                while(getal < eindGetal){
+                    console.log(getal);
+                    getal++;
+                }
+ 
+            }
+ 
+        </script>
+    </head>
+    <body>
+        <input type="button" value="klik Maar" onclick="optellen()">
+    </body>
+</html>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+==============================
+ 
+ 
+Luuk -> economie simulator
+ 
+Mohammed -> Snack machine
+ 
+Julian, Sander -> API uitlezen
+ 
+Jason, Ties -> Pokemon gevecht
+ 
+Ron, Job, Liza -> Memory
+ 
+Koen, Roald -> BlackJack
+ 
+Jutta -> Sudoku
+ 
+ 
+ 
+ 
+ 
+ 
+<html>
+    <head>
+        <style>
+ 
+        </style>
+        <script>
+            function optellen(){
+                var getal1 = document.getElementById("eerstegetal").value;
+                console.log( getal1 );
+                localStorage.setItem("zomaariets", getal1 );
+            }
+ 
+            function opvragen(){
+                var opgevraagd = localStorage.getItem("zomaariets");
+                alert(opgevraagd);
+                var eenObject = {};
+                eenObject.hoogte = 24;
+                alert(">>"+eenObject.hoogte);
+                var objJSON = JSON.stringify(eenObject);
+                localStorage.setItem("gpo",objJSON);
+                var ophaal2 = localStorage.getItem("gpo");
+                var weerLevend = JSON.parse(ophaal2);
+                alert(">"+weerLevend.hoogte);
+            }
+        </script>
+    </head>
+    <body>
+        <input type=text id=eerstegetal>
+        <input type=text>
+        <input type="button" value="klik Maar" onclick="optellen()">
+        <button onclick="opvragen()">opvragen</button>
+    </body>
+</html>
+ 
+ 
+ 
+ 
+ 
+=============================
+<html>
+    <head>
+        <style>
+ 
+        </style>
+        <script>
+            function optellen(){
+                var getal1 = document.getElementById("eerstegetal").value;
+                console.log( getal1 );
+                localStorage.setItem("zomaariets", getal1 );
+            }
+ 
+            function opvragen(){
+                var opgevraagd = localStorage.getItem("zomaariets");
+                alert(opgevraagd);
+ 
+            }
+        </script>
+    </head>
+    <body>
+        <input type=text id=eerstegetal>
+        <input type=text>
+        <input type="button" value="klik Maar" onclick="optellen()">
+        <button onclick="opvragen()">opvragen</button>
+    </body>
+</html>
+ 
+==============================
+ 
+<html>
+    <head>
+        <style>
+ 
+        </style>
+        <script>
+            function optellen(){
+                for( var x = 0 ; x < 10 ; x++ ){
+                        console.log("test"+x);
+                }
+                var weekdagen = [ "maandag","dinsdag" ,"woensdag","donderdag" ];
+                console.log( weekdagen[1] );
+                weekdagen[3] = "zaterdag";
+                weekdagen[4] = "zondag";  // laatje erbij maken -> push
+                for( var x = 0 ; x < weekdagen.length ; x++ ){
+                        console.log(weekdagen[x]);
+                }
+ 
+            }
+        </script>
+    </head>
+    <body>
+        <input type=button value="klikMaar" onclick=optellen()>
+    </body>
+</html>
+ 
+ 
+ 
+ 
+ 
+=========================
+ 
+<html>
+    <head>
+        <style>
+ 
+        </style>
+        <script>
+            function optellen(){
+                var getal1 = document.getElementById("first").value;
+                var getal2 = document.getElementById("second").value;
+                console.log(+getal1 + +getal2);
+                console.log(parseInt(getal1)+parseInt(getal2));
+                var uitkomst = parseInt(getal1)+parseInt(getal2);
+                document.getElementById("result").value = uitkomst;
+                document.getElementById("uitkomstdiv").innerHTML = uitkomst;
+            }
+        </script>
+    </head>
+    <body>
+        <textarea id="first"></textarea>
+        <textarea id="second"></textarea>
+        <button onclick="optellen()">klik hier</button>
+        <br>
+        <br>
+        <textarea id=result></textarea>
+        <div id=uitkomstdiv></div>
+    </body>
+</html>
+ 
+ 
+ 
+ 
+=======================================
+ 
+ 
+5  mkdir _FILES
+    6  cd _FILES/
+    7  mkdir trygit
+    8  cd trygit
+    9  git init
+   10  git status
+   11  git add .
+   12  git commit -am "ai"
+   13  git config --global user.email "hoi"
+   14  git config --global user.email "digitaleservice@gmail.com"
+   15  git config --global user.name "FelixvL"
+   16  git commit -am "ai"
+   17  git remote add origin https://github.com/FelixvL/trygo.git
+   18  git push -u origin master
+   19  cd ..
+   20   cd ..
+   21  cd _FILES/
+   22  ls
+   23  cd voorbeeldqien/
+   24  ls
+   25  git init
+   26  git init
+   27  pwd
+   28  history
+   29  cd ..
+   30  cd ..
+   31  cd _FILES/voorbeeldqien/
+   32  git status
+   33  git add .
+   34  git status
+   35  git commit -am "eerste commit"
+   36  git log
+   37  git status
+   38  git add .
+   39  git commit -am "gaan"
+   40  git log
+   41  git remote add origin https://github.com/FelixvL/demoqiensept.git
+   42  git push
+   43  git push --set-upstream origin master
+   44  history
+ 
+=============================================
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+https://troubleshooter.xyz/wiki/fix-folder-view-settings-not-saving-windows-10/
+ 
+ 
+ 
+ 
+ 
+==========================================================================================================
+<html>
+<style>
+    textarea{
+        background-color:green;
+ 
+    }
+    b{
+        background-color: red;
+ 
+    }
+ 
+</style>
+<script>
+    window.onload = function(){
+        alert("klaar met laden");
+    }
+    function optellen(){
+        var deDom = document.getElementsByTagName("html");
+        console.log(deDom);
+        var iets = document.getElementById("kaas");
+        alert(iets.value);
+    }
+ 
+</script>
+ 
+doe er een zin bij <b onclick=optellen()> hallo </b>
+<p>
+    hallo allemaal
+ 
+</p>
+<textarea rows=55 id=kaas>
+ 
+    zet hier ook wat in
+</textarea>
+</html>
+ 
+ 
+ 
+==========================================================
+ 
+a, b, i, u, p, span, div, table, tr, td, head, body, script, title, meta, 
+textarea, title, br, button, details, dl, img, form, h1, h6, input, li, ol, ul, link, style, select, option, sup
+ 
+ 
+ 
+======================================================
+ 
+<style>
+    textarea{
+        background-color:green;
+ 
+    }
+    b{
+        background-color: red;
+ 
+    }
+ 
+</style>
+<script>
+    window.onload = function(){
+        alert("klaar met laden");
+    }
+    function optellen(){
+        var iets = document.getElementById("kaas");
+        alert(iets.value);
+    }
+ 
+</script>
+ 
+doe er een zin bij <b onclick=optellen()> hallo </b>
+<p>
+    hallo allemaal
+ 
+</p>
+<textarea rows=55 id=kaas>
+ 
+    zet hier ook wat in
+</textarea>
+
+
+<html>
+   <head>
+       <style>
+          
+       </style>
+ 
+       <script>
+           function coordinaten () {
+               const coords = Array.from(Array(16), () => new Array(4));
+ 
+               for (let x=0; x<4; x++) {
+                   for (let y=0; y<4;y++){
+                       coords[x][y] = (y - x) + ',' + 0;
+                       coords[x+4][y] = 0 + ',' + (y - x);
+                       coords[x+8][y] = (y - x) + ',' + (y - x);
+                       coords[x+12][y] = (x - y) + ',' + (y - x);
+                   }
+               }
+               return coords;
+           }
+ 
+ 
+           console.log(coordinaten());
+       </script>
+   </head>
+</html>
+
