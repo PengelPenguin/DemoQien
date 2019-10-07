@@ -1,0 +1,19 @@
+.player1{
+    background-color:bisque
+}
+
+.player2{
+    background-color:bisque
+}
+
+.show{
+    visibility: visible;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+ body{
+     background-color: brown;
+ }
