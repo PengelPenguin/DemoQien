@@ -11,30 +11,85 @@
         var player_1_pokemon;
         var player_2_pokemon;
 
+        var keuzePokemon1;
+        var keuzePokemon2;
+
+        var player1health = 100;
+        var player2health = 100;
+
+        var player1_turn = true;
+        var player2_turn = false;
+
+        window.onload = initGame;
+
+        function initGame()
+        {
+            var battleArea = document.getElementById("battleArea");
+            battleArea.classList.add("hide");
+            player1health = 100;
+            player2health = 100;
+        }
+
         function StartGevecht(){
             //player1
-            var keuzePokemon1 = document.getElementById('keuzePlayer1');
-            var player_1_pokemon = keuzePokemon1.options[keuzePokemon1.selectedIndex].value;
-            
+            keuzePokemon1 = document.getElementById('keuzePlayer1');
+            player_1_pokemon = keuzePokemon1.options[keuzePokemon1.selectedIndex].value;
+
             //player 2
-            var keuzePokemon2 = document.getElementById('keuzePlayer2');
-            var player_2_pokemon = keuzePokemon2.options[keuzePokemon2.selectedIndex].value;
+            keuzePokemon2 = document.getElementById('keuzePlayer2');
+            player_2_pokemon = keuzePokemon2.options[keuzePokemon2.selectedIndex].value;
 
             //Check pokemons
-            if(player_2_pokemon == "keuze" || player_2_pokemon == "keuze")
+            if(player_1_pokemon == "keuze" || player_2_pokemon == "keuze")
             {
                 alert("kies een pokemon");
-                
             }
             else
             {
                 alert("We gaan beginnen!!");
-                //show battle fase
+                var battleArea = document.getElementById("battleArea");
+                battleArea.classList.remove("hide");
+                document.getElementById("p1PokemonNaam").innerHTML = player_1_pokemon + " Health: " + player1health; 
+                document.getElementById("p2PokemonNaam").innerHTML = player_2_pokemon + " Health: " + player2health;
             }
         }
 
-        function Attack(){
-            alert("attack");
+        function AttackPlayer1(damage){
+            if(player1_turn){
+                if(player1health <= 0){
+                    player1health = 0;
+                    alert(player_2_pokemon + " heeft gewonnen");
+                    //alert(player1health);
+                    initGame();
+                }
+                else
+                {
+                    player1health -= damage;
+                }
+                document.getElementById("p1PokemonNaam").innerHTML = player_1_pokemon + " Health: " + player1health;
+                player1_turn = false;
+                player2_turn = true;
+            }
+        }
+
+        function AttackPlayer2(damage)
+        {
+            if(player2_turn == true)
+            {    
+                if(player2health <= 0){
+                    player2health = 0;
+                    alert(player_1_pokemon + " heeft gewonnen");
+                    initGame(); //restart
+                }
+                else
+                {
+                    player2health -= damage;
+                }
+                document.getElementById("p2PokemonNaam").innerHTML = player_2_pokemon + " Health: " + player2health;
+                player2_turn = false;
+                player1_turn = true;
+                
+            }
         }
     </script>
     <body>
@@ -57,18 +112,20 @@
 
         <button value= "start" onclick="StartGevecht()">start gevecht</button>
 
-        <div class="BattleContainer">
-            <h1>Aanvallen player 1</h1>
-                <button value="aanval1" onclick="Attack()">aanval1</button>
-                <button value="aanval2" onclick="Attack()">aanval2</button>
-                <button value="aanval3" onclick="Attack()">aanval3</button>
-                <button value="aanval4" onclick="Attack()">aanval4</button>
-
-            <h1>Aanvallen player 2</h1>
-                <button value="aanval1" onclick="Attack()">aanval1</button>
-                <button value="aanval2" onclick="Attack()">aanval2</button>
-                <button value="aanval3" onclick="Attack()">aanval3</button>
-                <button value="aanval4" onclick="Attack()">aanval4</button>
+        <div id="battleArea">
+            <div id="p1Moves">
+                <h1 id="p1PokemonNaam"></h1>
+                    <button value="aanval1" onclick="AttackPlayer1(30)">aanval1</button>
+                    <button value="aanval2" onclick="AttackPlayer1(40)">aanval2</button>
+                    <button value="aanval3" onclick="AttackPlayer1(15)">aanval3</button>
+                    <button value="aanval4" onclick="AttackPlayer1(50)">aanval4</button>
+            
+            </div>
+            <h1 id="p2PokemonNaam"></h1>
+                <button value="aanval1" onclick="AttackPlayer2(100)">aanval1</button>
+                <button value="aanval2" onclick="AttackPlayer2(40)">aanval2</button>
+                <button value="aanval3" onclick="AttackPlayer2(10)">aanval3</button>
+                <button value="aanval4" onclick="AttackPlayer2(23)">aanval4</button>
         </div>
     </body>
 </html>
