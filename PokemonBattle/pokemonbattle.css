@@ -17,3 +17,50 @@
  body{
      background-color: brown;
  }
+
+ .SelectContainer
+ {
+   background-color: green;  
+ }
+
+ #p1Select
+ {
+    position: absolute;
+    right: 0;
+ }
+
+ #p2Select
+ {
+    position: absolute;
+    left: 0;
+ }
+
+ #p1Moves
+ {
+     background-color: darkblue;
+     position: absolute;
+     right: 0;
+     height: 500px;
+ }
+
+ #p2Moves
+ {
+     background-color: darkkhaki;
+     position: absolute;
+     left: 0;
+     height: 500px;
+
+ }
+
+ #battleArea
+ {
+     background: deepskyblue;
+ }
+
+ #startButton{
+    height:20px; 
+    width:100px;  
+    position:relative;
+    top:50%; 
+    left:45%
+ }

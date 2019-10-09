@@ -28,6 +28,7 @@
             battleArea.classList.add("hide");
             player1health = 100;
             player2health = 100;
+            SetPokemonImage("charmander");
         }
 
         function StartGevecht(){
@@ -51,6 +52,57 @@
                 battleArea.classList.remove("hide");
                 document.getElementById("p1PokemonNaam").innerHTML = player_1_pokemon + " Health: " + player1health; 
                 document.getElementById("p2PokemonNaam").innerHTML = player_2_pokemon + " Health: " + player2health;
+                SetPokemonImage(keuzePokemon1.options[keuzePokemon1.selectedIndex].value,"player1");
+                SetPokemonImage(keuzePokemon2.options[keuzePokemon2.selectedIndex].value,"player2");
+
+
+            }
+
+
+        }
+
+        function SetPokemonImage(pokemonName,player)
+        {
+            var pokemonImage;
+            switch(pokemonName)
+            {
+                case "charmander":
+                    if(player == "player1")
+                    {
+                        document.getElementById("p1Image").src = "charmander.png";
+                        pokemonImage = "charmander";
+                    }else if(player == "player2")
+                    {
+                        document.getElementById("p2Image").src = "charmander.png";
+                        pokemonImage = "charmander";
+                    }
+                     
+                break;
+
+                case "squirtle":
+                    if(player == "player1")
+                    {
+                        document.getElementById("p1Image").src = "squirtle.png";
+                        pokemonImage = "squirtle";
+                    }else if(player == "player2")
+                    {
+                        document.getElementById("p2Image").src = "squirtle.png";
+                        pokemonImage = "squirtle";
+                    }
+                break;
+
+                case "bulbasaur":
+                if(player == "player1")
+                {
+                    document.getElementById("p1Image").src = "bulbasaur.png";
+                    pokemonImage = "bulbasaur";
+                }
+                else if(player == "player2")
+                {
+                    document.getElementById("p2Image").src = "bulbasaur.png";
+                    pokemonImage = "bulbasaur";
+                }
+                break;
             }
         }
 
@@ -94,6 +146,7 @@
     </script>
     <body>
         <div class="SelectContainer">
+            <div id="p1Select">
             <h1>Player 1</h1>
                 <select class="player1" id="keuzePlayer1">
                     <option value="keuze" selected>kies een pokemon</option>
@@ -101,6 +154,8 @@
                     <option value="squirtle">squirtle</option>
                     <option value="bulbasaur">bulbasaur</option>
                 </select>
+            </div>
+            <div id="p2Select">
             <h1>Player 2</h1>
                 <select class="player2" id="keuzePlayer2">
                     <option value="keuze" selected>kies een pokemon</option>
@@ -108,9 +163,10 @@
                     <option value="squirtle">squirtle</option>
                     <option value="bulbasaur">bulbasaur</option>
                 </select>
+            </div>
         </div>
 
-        <button value= "start" onclick="StartGevecht()">start gevecht</button>
+        <button value= "start" onclick="StartGevecht()" id="startButton">start gevecht</button>
 
         <div id="battleArea">
             <div id="p1Moves">
@@ -119,13 +175,24 @@
                     <button value="aanval2" onclick="AttackPlayer1(40)">aanval2</button>
                     <button value="aanval3" onclick="AttackPlayer1(15)">aanval3</button>
                     <button value="aanval4" onclick="AttackPlayer1(50)">aanval4</button>
-            
+
+                    <img src="" id="p1Image">
+
             </div>
-            <h1 id="p2PokemonNaam"></h1>
-                <button value="aanval1" onclick="AttackPlayer2(100)">aanval1</button>
-                <button value="aanval2" onclick="AttackPlayer2(40)">aanval2</button>
-                <button value="aanval3" onclick="AttackPlayer2(10)">aanval3</button>
-                <button value="aanval4" onclick="AttackPlayer2(23)">aanval4</button>
+
+            <div id="p2Moves">
+                
+                    <h1 id="p2PokemonNaam"></h1>
+                        <button value="aanval1" onclick="AttackPlayer2(100)">aanval1</button>
+                        <button value="aanval2" onclick="AttackPlayer2(40)">aanval2</button>
+                        <button value="aanval3" onclick="AttackPlayer2(10)">aanval3</button>
+                        <button value="aanval4" onclick="AttackPlayer2(23)">aanval4</button>
+
+                        <img src="" id="p2Image">
+
+            </div>
         </div>
+
+        
     </body>
 </html>
