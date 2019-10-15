@@ -20,7 +20,112 @@
         var player1_turn = true;
         var player2_turn = false;
 
+////////////////Class Section///////////////////////
+        
         window.onload = initGame;
+        var name;
+        var type;
+        var image;
+        var playerMoves;
+
+        class PokemonTrainer
+        {
+            Pokemon_;
+            PlayerIndex;
+            pokemonName_;
+            currentpokemon_;
+            constructor(Pokemon_name,PlayerIndex)
+            {
+                this.PlayerIndex = PlayerIndex;
+                var currentpokemon = new Pokemon(Pokemon_name);
+                Pokemon_name = currentpokemon.name;
+                //currentpokemon_ = currentpokemon;
+            }
+
+            Attack()
+            {
+                damage = Move.damage;
+                if(player1_turn == true)
+                {
+                    if(player1health <= 0){
+                        player1health = 0;
+                        alert(player_2_pokemon + " heeft gewonnen");
+                        //alert(player1health);
+                        initGame();
+                    }
+                    else
+                    {
+                        player1health -= damage;
+                    }
+                    document.getElementById("p1PokemonNaam").innerHTML = player_1_pokemon + " Health: " + player1health;
+                    player1_turn = false;
+                    player2_turn = true; //<<<<<-- buggy
+                }
+            }
+        }
+        
+        class Pokemon
+        {   
+            type_
+            name_
+            health = 100;
+            constructor(name)
+            {
+                this.name_ = name;
+
+                switch(name)
+                {
+                    case "charmander":
+                        var flamethrower = new Move(30,3);
+                        var fireblast = new Move(35,4);
+                        var firespin = new Move(45,2);
+                        var ember = new Move(10,6);
+
+                        playerMoves = [flamethrower,fireblast,firespin,ember];
+                        document.getElementById("pokeImage").src = "squirtle.png";
+                        
+                        alert(playerMoves);
+                    break;
+
+                    case "squirtle":
+                        var hydropump = new Move(30,3);
+                        var bubble = new Move(35,4);
+                        var watergun = new Move(45,2);
+                        var waterfall = new Move(10,6);
+                    
+                        playerMoves = [hydropump,bubble,watergun,waterfall];
+                        document.getElementById("pokeImage").src = "charmander.png";
+                        
+                        alert(playerMoves);
+                    break;
+
+                    case "bulbasaur":
+                        var razorleaf = new Move(30,3);
+                        var vinewhip = new Move(35,4);
+                        var gigadrain = new Move(45,2);
+                        var solarbeam = new Move(10,6);
+
+                        playerMoves = [vinewhip,gigadrain,solarbeam,razorleaf];
+                        document.getElementById("pokeImage").src = "bulbasaur.png"
+                        
+                        alert(playerMoves);
+                    break;
+                }
+            }   
+        }
+
+        class Move
+        {
+            damage;
+            pp;
+            name;
+            constructor(damage,pp)
+            {
+                this.damage;
+                this.pp;
+            }
+            
+        }
 
         function initGame()
         {
@@ -32,16 +137,16 @@
         }
 
         function StartGevecht(){
-            //player1
-            keuzePokemon1 = document.getElementById('keuzePlayer1');
-            player_1_pokemon = keuzePokemon1.options[keuzePokemon1.selectedIndex].value;
 
-            //player 2
+            keuzePokemon1 = document.getElementById('keuzePlayer1');
             keuzePokemon2 = document.getElementById('keuzePlayer2');
-            player_2_pokemon = keuzePokemon2.options[keuzePokemon2.selectedIndex].value;
+
+            speler_1 = new PokemonTrainer(keuzePokemon2.options[keuzePokemon1.selectedIndex].value,1);
+            speler_2 = new PokemonTrainer(keuzePokemon2.options[keuzePokemon2.selectedIndex].value,1);
+
 
             //Check pokemons
-            if(player_1_pokemon == "keuze" || player_2_pokemon == "keuze")
+            if(speler_1.pokemonName_ == "keuze" || speler_2.pokemonName_ == "keuze")
             {
                 alert("kies een pokemon");
             }
@@ -50,15 +155,13 @@
                 alert("We gaan beginnen!!");
                 var battleArea = document.getElementById("battleArea");
                 battleArea.classList.remove("hide");
-                document.getElementById("p1PokemonNaam").innerHTML = player_1_pokemon + " Health: " + player1health; 
-                document.getElementById("p2PokemonNaam").innerHTML = player_2_pokemon + " Health: " + player2health;
-                SetPokemonImage(keuzePokemon1.options[keuzePokemon1.selectedIndex].value,"player1");
-                SetPokemonImage(keuzePokemon2.options[keuzePokemon2.selectedIndex].value,"player2");
-
-
+                document.getElementById("p1PokemonNaam").innerHTML = speler_1.pokemonName_  + " Health: " + 100; 
+                document.getElementById("p2PokemonNaam").innerHTML = speler_2.pokemonName_  + " Health: " + 100;
+                SetPokemonImage(speler_1.pokemonName_,"player1");
+                SetPokemonImage(speler_2.pokemonName_,"player2");
             }
 
-
+                ///image todooooo
         }
 
         function SetPokemonImage(pokemonName,player)
@@ -106,8 +209,11 @@
             }
         }
 
-        function AttackPlayer1(damage){
-            if(player1_turn){
+        function AttackPlayer1(Move)
+        {
+            damage = Move.damage;
+            if(player1_turn == true)
+            {
                 if(player1health <= 0){
                     player1health = 0;
                     alert(player_2_pokemon + " heeft gewonnen");
@@ -120,12 +226,13 @@
                 }
                 document.getElementById("p1PokemonNaam").innerHTML = player_1_pokemon + " Health: " + player1health;
                 player1_turn = false;
-                player2_turn = true;
+                player2_turn = true; //<<<<<-- buggy
             }
         }
 
-        function AttackPlayer2(damage)
+        function AttackPlayer2(Move)
         {
+            damage = Move.damage;
             if(player2_turn == true)
             {    
                 if(player2health <= 0){
@@ -138,13 +245,16 @@
                     player2health -= damage;
                 }
                 document.getElementById("p2PokemonNaam").innerHTML = player_2_pokemon + " Health: " + player2health;
-                player2_turn = false;
-                player1_turn = true;
-                
+                player2_turn = true;
+                player1_turn = false;
             }
         }
     </script>
     <body>
+        <div id="pokePicture">
+                <img src="" id="pokeImage">
+        </div>
+
         <div class="SelectContainer">
             <div id="p1Select">
             <h1>Player 1</h1>
@@ -171,25 +281,20 @@
         <div id="battleArea">
             <div id="p1Moves">
                 <h1 id="p1PokemonNaam"></h1>
-                    <button value="aanval1" onclick="AttackPlayer1(30)">aanval1</button>
-                    <button value="aanval2" onclick="AttackPlayer1(40)">aanval2</button>
-                    <button value="aanval3" onclick="AttackPlayer1(15)">aanval3</button>
-                    <button value="aanval4" onclick="AttackPlayer1(50)">aanval4</button>
-
-                    <img src="" id="p1Image">
-
+                    <button value="aanval1" onclick="AttackPlayer1(playerMoves[0].damage)">aanval1</button>
+                    <button value="aanval2" onclick="AttackPlayer1(playerMoves[1].damage)">aanval2</button>
+                    <button value="aanval3" onclick="AttackPlayer1(playerMoves[2].damage)">aanval3</button>
+                    <button value="aanval4" onclick="AttackPlayer1(playerMoves[3].damage)">aanval4</button>
+                    <img src="" id="p1Image">       
             </div>
 
             <div id="p2Moves">
-                
-                    <h1 id="p2PokemonNaam"></h1>
-                        <button value="aanval1" onclick="AttackPlayer2(100)">aanval1</button>
-                        <button value="aanval2" onclick="AttackPlayer2(40)">aanval2</button>
-                        <button value="aanval3" onclick="AttackPlayer2(10)">aanval3</button>
-                        <button value="aanval4" onclick="AttackPlayer2(23)">aanval4</button>
-
-                        <img src="" id="p2Image">
-
+                <h1 id="p2PokemonNaam"></h1>
+                    <button value="aanval1" onclick="AttackPlayer2(playerMoves[0].damage)">aanval1</button>
+                    <button value="aanval2" onclick="AttackPlayer2(playerMoves[1].damage)">aanval2</button>
+                    <button value="aanval3" onclick="AttackPlayer2(playerMoves[2].damage)">aanval3</button>
+                    <button value="aanval4" onclick="AttackPlayer2(playerMoves[3].damage)">aanval4</button>
+                    <img src="" id="p2Image">
             </div>
         </div>
 

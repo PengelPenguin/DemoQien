@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <script>
+        window.onload = setup;
+        window.onload = draw;
+
+        
+        class Pokemon {
+            Name = "";
+            
+
+            constructor(name) {
+                this.name = Name;
+            }
+        }
+
+        var playerPokemon;
+        var enemyPokemon;
+
+        class Move {
+            constructor(name, type, pp, damage) {
+
+            }
+        }
+
+        var setup = function () {
+            playerPokemon = new Pokemon("charmanader");
+            document.getElementById("names").innerHTML += playerPokemon.name;
+
+            enemyPokemon = new pokemon();
+        }
+
+        var draw = function () {
+            background(255)
+            fill(0);
+            text(playerPokemon.name, 250, 200);
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1 id="names">yo</h1>
+</body>
+
+</html>
